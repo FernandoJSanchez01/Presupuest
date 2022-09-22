@@ -1,52 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Link para agregar bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
     <title>Presupuesto</title>
-</head>
-<body>
-    
-    <form name="">
+  </head>
+  <body>
+    <form>
+      <div class="informaciones">
+        <div class="datos">
+          <h3 id="titulo">Presupuesto 50/20/30</h3>
+          <label id="letras" for="ingreso" onfocus="this.values">Ingreso: </label>
+          <input
+            type="number"
+            id="ingreso"
+            name="ingreso"
+            placeholder="Digite un monto"
+          /><br /><br />
+          <p id="letras">Ahorro: <span id="ahorrar"></span></p>
+          <p id="letras">Gastos Personales: <span id="gastospers"></span></p>
+          <p id="letras">Gastos basicos: <span id="gastosbasic"></span></p>
+          
+          <!-- Descripcion de cada enunciado -->
+          <!-- <span id="descripcion">Este dinero va dirigido a crear un fondo de emergencia.</span>
+          <span id="descripcion">Este dinero va dirigido a gastos de necesidades basicas pero que no son inprescindibles para la vida.</span>
+          <span id="descripcion">Este dinero va dirigido a gastos necesarios y que son necesarios para existir.</span>-->
 
-    <div class="presupuesto">
-        <label for="ingreso">Ingreso: </label>
-        <input type="number" id="ingreso" name="ingreso" placeholder="Digite su nombre"><br><br>
-        <p>Ahorro:<span id="ahorrar"></span></p>
-        <p>Gastos Personales: <span id="gastospers"></span></p>
-        <p>Gastos basicos: <span id="gastosbasic"></span></p>
-       
-        <button type="button" onclick="calculo()">
-            Calcular presupuesto
-        </button>
-        
-    </div>
-        </form>
+          <div class="boton">
+            <!-- Boton para calcular -->
+            <button id="boton" type="button" class="btn btn-outline-success" onclick="calculo()">
+              Calcular presupuesto
+            </button>
+            <!-- Boton para borrar -->
+            <button id="boton2" type="button" class="btn btn-outline-secondary" onclick="borrar()">
+              Borrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
     <script type="text/javascript">
-        function calculo(){
 
-            //Capturar valor
-            var ope= document.getElementById("ingreso").value;
+      //Funcion para realizar los calculos
+      function calculo() {
+        //Capturar valor
+        var ope = document.getElementById("ingreso").value;
 
-            //Imprimir valores por pantalla
-            var pantallaahorro = document.getElementById("ahorrar");
-            var GastosPersonalesPantalla = document.getElementById("gastospers");
-            var GastosBasicosPantalla = document.getElementById("gastosbasic");
+        //Imprimir valores por pantalla
+        var pantallaahorro = document.getElementById("ahorrar");
+        var GastosPersonalesPantalla = document.getElementById("gastospers");
+        var GastosBasicosPantalla = document.getElementById("gastosbasic");
 
-            //Operaciones
-            var ahorro = ope * 0.50;
-            var gastospersonales = ope * 0.20;
-            var gastosbasicos = ope * 0.30;
+        //Operaciones
+        var ahorro = ope * 0.5;
+        var gastospersonales = ope * 0.2;
+        var gastosbasicos = ope * 0.3;
 
-            //Salida de pantallas
-            pantallaahorro.innerHTML = ahorro;
-            GastosPersonalesPantalla.innerHTML = gastospersonales;
-            GastosBasicosPantalla.innerHTML = gastosbasicos;
+        //Salida de pantallas
+        pantallaahorro.innerHTML = ahorro;
+        GastosPersonalesPantalla.innerHTML = gastospersonales;
+        GastosBasicosPantalla.innerHTML = gastosbasicos;
+      }
 
-       
+      //Funcion para borrar los resultados
+      function borrar() {
+          var pantallaahorro = document.getElementById("ahorrar");
+        var GastosPersonalesPantalla = document.getElementById("gastospers");
+        var GastosBasicosPantalla = document.getElementById("gastosbasic");
+
+        //Operaciones
+        var ahorro = 0;
+        var gastospersonales = 0;
+        var gastosbasicos = 0;
+
+        //Salida de pantallas
+        pantallaahorro.innerHTML = ahorro;
+        GastosPersonalesPantalla.innerHTML = gastospersonales;
+        GastosBasicosPantalla.innerHTML = gastosbasicos;
+
+        document.getElementById("ingreso").value ="";
+        document.getElementById("ingreso").focus();
+
         }
     </script>
-</body>
+  </body>
 </html>
